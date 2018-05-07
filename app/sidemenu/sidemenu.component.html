@@ -1,0 +1,55 @@
+<aside *ngIf="commonService.isLoginUser()" class="inx-main-sidebar">
+  <section class="sidebar">
+    <ul class="inx-sidebar-menu">
+      <li [ngClass]="(commonService.activemenu=='user')?'active':''">
+        <a class="nav-link"  [routerLink]="['user']">
+          <i class="fa fa-user-o"></i> <span>User</span>
+        </a>
+      </li>
+      <li [ngClass]="(commonService.activemenu=='category')?'active':''">
+        <a class="nav-link"  [routerLink]="['category']">
+          <i class="fa fa-files-o"></i>
+          <span>Category</span>
+        </a>
+      </li>
+      <li [ngClass]="(commonService.activemenu=='image')?'active':''">
+        <a class="nav-link"  [routerLink]="['image']">
+          <i class="fa fa-picture-o"></i> <span>Image</span>
+        </a>
+      </li> <li [ngClass]="(commonService.activemenu=='video')?'active':''">
+          <a class="nav-link"  [routerLink]="['video']">
+            <i class="fa fa-th"></i> <span>Video</span>
+          </a>
+        </li>
+      <li [ngClass]="(commonService.activemenu=='advertisement')?'active':''">
+        <a class="nav-link"  [routerLink]="['advertisement']">
+          <i class="fa fa-pie-chart"></i>
+          <span>Advertisement</span>
+        </a>
+      </li>
+      <li [ngClass]="(commonService.activemenu=='cms')?'active':''">
+        <a class="nav-link"  [routerLink]="['cms']">
+          <i class="fa fa-dashboard"></i> <span>CMS Pages</span>
+        </a>
+      </li>
+      <li [ngClass]="(commonService.activemenu=='price')?'active':''">
+        <a class="nav-link"  [routerLink]="['price']">
+          <i class="fa fa-money"></i>
+          <span>Price Package Management</span>
+        </a>
+      </li>
+      <li [ngClass]="(commonService.activemenu=='settings')?'active':''">
+        <a class="nav-link"  [routerLink]="['setting']">
+          <i class="fa fa-weixin"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+      <!-- <li>
+        <a class="nav-link"  (click)="logoutUser();">
+          <i class="fa fa-files-o"></i>
+          <span>Logout</span>
+        </a>
+      </li> -->
+    </ul>
+  </section>
+</aside>

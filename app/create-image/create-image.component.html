@@ -1,0 +1,94 @@
+<div class="inx-content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="inx-content-header">
+    <h1>{{title}}</h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#"> Image</a></li>
+      <li class="active"> 
+          {{title}}
+      </li>
+    </ol>
+  </section>
+  <section class="content-block">
+    <div class="block-header">
+      <div class="pageTitle">
+          {{title}}} Image
+      </div>
+    </div>
+    <div class="block-content">
+      <div class="edit-content">
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="image">
+            <div class="col-sm-6 e-m">
+              <div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <label class="control-label e-mail">Image Title</label>
+                </div>
+                <div class="col-sm-6">
+                  <input  trim="blur" 
+                  class="e-mails" 
+                  type="text" 
+                  placeholder="Title" 
+                  formControlName="title">
+                  <div *ngIf="!image.controls['title'].valid && isSubmitted">
+                      <p class="p-ragraphs-s" 
+                      *ngIf="image.controls['title'].errors.required">Title is required.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 e-m">
+              <div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <label class="control-label e-mail">Description</label>
+                </div>
+                <div class="col-sm-6">
+                  <textarea trim="blur" 
+                  class="e-mails" 
+                  type="text" 
+                  placeholder="Description" 
+                  formControlName="description"></textarea>
+                  <div *ngIf="!image.controls['description'].valid && isSubmitted">
+                      <p class="p-ragraphs-s" *ngIf="image.controls['description'].errors.required">Description is required.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 e-m">
+              <div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <label class="control-label e-mail">Image File </label>
+                </div>
+                <div class="col-sm-6">
+                  <input class="e-mails" type="file"  
+                  (change)="fileChangeEvent($event)" 
+                  placeholder="Upload file..." />
+                  <span *ngIf="videopath!==''" >
+                      <img id="img-up" src="{{videopath}}" 
+                      class="image-m-top" width="100px" height="100px" />
+                  </span>
+                  <!-- <div *ngIf="filesToUpload.length<=0 && isSubmitted && !fileformat" class="">
+                      <p class="p-ragraphs-s">Select a image file with resolution.</p>
+                  </div> -->
+                  <div *ngIf="(filesToUpload.length<=0 || !fileformat) && !isStart">
+                    <p class="p-ragraphs-s">Select a image file.</p>
+                </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            <button type="submit" class="edit-update">
+              {{(image.controls['id']!=undefined 
+              && image.controls['id'].value!='' 
+              && image.controls['id'].image!=undefined 
+              && image.controls['id'].value!=null)?'Update':'Create'}}
+            </button>
+            <a [routerLink]="['/image']" class="cancel-update">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

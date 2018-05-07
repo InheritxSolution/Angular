@@ -1,0 +1,71 @@
+<div class="inx-content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="inx-content-header">
+    <h1>{{title}}</h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#">User</a></li>
+      <li class="active">{{title}}</li>
+    </ol>
+  </section>
+  <section class="content-block">
+    <div class="block-header">
+      <div class="pageTitle">{{title}} User</div>
+    </div>
+    <div class="block-content">
+      <div class="edit-content">
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="user">
+            <div class="col-sm-6 e-m">
+              <div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <label class="control-label  e-mail">Email</label>  
+                </div>
+                <div class="col-sm-6">
+                  <input trim="blur" class="e-mails" type="email" placeholder="Email" formControlName="email">
+                  <div *ngIf="!user.controls['email'].valid && isSubmitted" class="">
+                      <p class="p-ragraphs-s" *ngIf="user.controls['email'].errors.required">Email is required.</p>
+                      <p class="p-ragraphs-s" *ngIf="!user.controls['email'].errors.required && user.controls['email'].errors.invalidEmailAddress">Email is not valid.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 e-m" *ngIf="(user.controls['id']==undefined || user.controls['id'].value=='' || user.controls['id'].value==undefined || user.controls['id'].value==null)">
+              <div class="row">
+                  <div class="col-sm-6 col-md-4">
+                    <label class="control-label password">Password:</label>  
+                  </div>
+                  <div class="col-sm-6">
+                <input  class="e-mails" type="password" placeholder="Password" formControlName="password">
+                <div *ngIf="!user.controls['password'].valid && isSubmitted" class="">
+                    <p class="p-ragraphs-s" *ngIf="user.controls['password'].errors.required">Password is required.</p>
+                </div></div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 e-m">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+              <label class="control-label d-births">Date of Birth:</label>  
+              </div>
+              <div class="col-sm-6">
+              <input readonly="true" class="form-control d-dates" maxDate="maxDate" placeholder="yyyy-mm-dd" (click)="d.toggle()" name="dp" id="dob" formControlName="dob" ngbDatepicker #d="ngbDatepicker">
+              <div *ngIf="!user.controls['dob'].valid && isSubmitted" class="">
+                  <p class="p-ragraphs-s" *ngIf="user.controls['dob'].errors.required">Date of Birth is required.</p>
+              </div>
+              <div *ngIf="user.controls['dob'].valid && !dobvalidate && isSubmitted" class="">
+                  <p class="p-ragraphs-s">User must be 17 years old.</p>
+              </div>
+            </div>
+            </div>
+            </div>
+            <div class="clearfix"></div>
+            <button type="submit" class="edit-update">
+                {{(user.controls['id']!=undefined && user.controls['id'].value!='' && user.controls['id'].value!=undefined && user.controls['id'].value!=null)?'Update':'Create'}}
+            </button>
+            <a [routerLink]="['/user']" class="cancel-update">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

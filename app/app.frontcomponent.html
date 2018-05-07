@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div [hidden]="!(httpclient?.loader.length>0)" class="loaderhead">
+        <div *ngFor="let loader of httpclient?.loader" class="loaderspinner">
+            <div class="spinner">
+                <div class="double-bounce1">Loading...</div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pagescrollerx"></div>
+    <template ngbModalContainer></template>
+    <div [ngClass]="">
+        <div toastContainer></div>
+        <router-outlet></router-outlet>        
+    </div>
+</div>
